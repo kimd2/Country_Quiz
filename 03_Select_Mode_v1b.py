@@ -2,7 +2,7 @@
 Component 3 - Select Mode
 Diane Kim
 28/07/21
-Version 1b - Select mode GUI, selectBackground = Ivory
+Version 1b - Select mode GUI, selectBackground = Floral White
 """
 
 from tkinter import *
