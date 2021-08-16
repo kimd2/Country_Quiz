@@ -357,8 +357,9 @@ class Quiz:
     def open_start(self):
         print("Start Opened")
         # Forget menu frame
-        global menu_frame, mode_cb, start_frame
+        global menu_frame, mode_cb, start_frame, level
         menu_frame.grid_forget()
+        level = 1
 
         # Create select mode frame
         start_frame = Frame(root,
