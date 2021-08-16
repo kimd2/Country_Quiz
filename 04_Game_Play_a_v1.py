@@ -40,9 +40,12 @@ class Quiz:
         test_image = PhotoImage(file='Images\\01a.png')
         self.image_button = Button(self.quiz_frame,
                                    image=test_image,
+                                   text="Initial",
+                                   compound="top",
                                    background="gold",
                                    activebackground="Light goldenrod",
-                                   font=("Lucida Console", "14", "bold"))
+                                   font=("Lucida Console", "14", "bold"),
+                                   command=self.picture)
         self.image_button.grid(row=2, pady=10, padx=10)
 
         # Score button
@@ -72,6 +75,9 @@ class Quiz:
         # Position holder
         self.space_label = Label(self.quiz_frame, bg="Lemon Chiffon")
         self.space_label.grid(row=6)
+
+    def picture(self):
+        self.image_button.configure(image="", text="Hello")
 
 
 if __name__ == "__main__":
