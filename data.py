@@ -59,7 +59,7 @@ fra = {
     'national flower': ['Images\\01a.png', "France"],
     'national animal': ['Images\\01a.png', "France"],
     'population': '67.1m',
-    'currency': 'CFP Franc',
+    'currency': 'Euro',
     'area': '643,801 km²'
 }
 
@@ -74,7 +74,7 @@ jpn = {
     'national animal': ['Images\\01a.png', "Japan"],
     'population': '126.3m',
     'currency': 'Yen',
-    'area': '377,975'
+    'area': '377,975 km²'
 }
 
 chn = {
