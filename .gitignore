@@ -5,3 +5,4 @@ __pycache__/data.cpython-38.pyc
 __init__.py
 __pycache__/__init__.cpython-38.pyc
 data.py
+*.txt
