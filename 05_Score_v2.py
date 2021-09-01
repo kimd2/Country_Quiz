@@ -142,7 +142,9 @@ class Quiz:
                                    text=others[0][1],
                                    activebackground="light goldenrod",
                                    font=("Lucida Console", "14"),
-                                   command=self.check_answer_1
+                                   command=self.check_answer_1,
+                                   width=303,
+                                   height=229
                                    )
             play_button_1.grid(row=4, column=0, pady=10, padx=10)
 
@@ -153,7 +155,9 @@ class Quiz:
                                    text=others[1][1],
                                    activebackground="light goldenrod",
                                    font=("Lucida Console", "14"),
-                                   command=self.check_answer_2
+                                   command=self.check_answer_2,
+                                   width=303,
+                                   height=229
                                    )
 
             play_button_2.grid(row=4, column=1, pady=10, padx=10)
@@ -165,7 +169,9 @@ class Quiz:
                                    text=others[2][1],
                                    activebackground="light goldenrod",
                                    font=("Lucida Console", "14"),
-                                   command=self.check_answer_3
+                                   command=self.check_answer_3,
+                                   width=303,
+                                   height=229
                                    )
             play_button_3.grid(row=5, column=0, pady=10, padx=10)
 
@@ -176,7 +182,9 @@ class Quiz:
                                    text=others[3][1],
                                    activebackground="light goldenrod",
                                    font=("Lucida Console", "14"),
-                                   command=self.check_answer_4
+                                   command=self.check_answer_4,
+                                   width=303,
+                                   height=229
                                    )
             play_button_4.grid(row=5, column=1, pady=10, padx=10)
 
@@ -222,6 +230,27 @@ class Quiz:
         # Question format changes to multichoice
         elif level == 4:
             self.level()
+        elif level ==7:
+            answer = country[keys[level]]
+            question = keys[level]
+            others = random_country(answer, question)
+            random.shuffle(others)
+
+            others[0][1] = "1"
+            others[1][1] = "2"
+            others[2][1] = "3"
+            others[3][1] = "4"
+
+            image_1 = PhotoImage(file=others[0][0])
+            image_2 = PhotoImage(file=others[1][0])
+            image_3 = PhotoImage(file=others[2][0])
+            image_4 = PhotoImage(file=others[3][0])
+            # Next question
+            play_button_4.configure(text=others[3][1], image=image_4, state=NORMAL)
+            play_button_3.configure(text=others[2][1], image=image_3, state=NORMAL)
+            play_button_2.configure(text=others[1][1], image=image_2, state=NORMAL)
+            play_button_1.configure(text=others[0][1], image=image_1, state=NORMAL)
+            play_question.configure(text="What is the {} of {}?".format(question, mode))
         elif type[question] == 'image multichoice' or type[question] == "multichoice":
             answer = country[keys[level]]
             question = keys[level]
@@ -247,10 +276,10 @@ class Quiz:
                 play_question.configure(text="What is the {} of {}?".format(question, mode))
             else:
                 # Next question
-                play_button_4.configure(text=others[3], image="", width=max_width, state=NORMAL)
-                play_button_3.configure(text=others[2], image="", width=max_width, state=NORMAL)
-                play_button_2.configure(text=others[1], image="", width=max_width, state=NORMAL)
-                play_button_1.configure(text=others[0], image="", width=max_width, state=NORMAL)
+                play_button_4.configure(text=others[3], image="", width=max_width, height=1, state=NORMAL)
+                play_button_3.configure(text=others[2], image="", width=max_width, height=1, state=NORMAL)
+                play_button_2.configure(text=others[1], image="", width=max_width, height=1, state=NORMAL)
+                play_button_1.configure(text=others[0], image="", width=max_width, height=1, state=NORMAL)
             play_question.configure(text="What is the {} of {}?".format(question, mode))
         else:
             # Set question and answers
