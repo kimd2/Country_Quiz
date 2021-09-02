@@ -109,7 +109,6 @@ class Quiz:
                                               command=self.check_answer_1)
             play_short_answer_button.grid(row=5, columnspan=2, pady=5)
 
-
             # Create menu for quit option
             play_menu = Menu(root)
             menu_options = Menu(play_menu,
@@ -208,19 +207,20 @@ class Quiz:
                                   font=('lucida console', '14'),
                                   command=self.next)
 
-    def menu_menu(self):
+    # Commands for menu bar
+    def menu_menu(self):    # Return to Menu
         global initial
         menu_response = msgbox.askokcancel("Return to Menu?", "You will be taken to the menu.\nYour current score will be saved, but this game will not be saved.")
         if menu_response:
             first = "Play"
             self.open_menu(first)
 
-    def menu_exit(self):
+    def menu_exit(self):    # Exit to scoreboard
         menu_response = msgbox.askokcancel("Exit Game?", "You will be taken to the scoreboard.\nYour current score will be saved, but this game will not be saved.")
         if menu_response:
             self.return_score()
 
-    def menu_quit(self):
+    def menu_quit(self):    # Quit game
         menu_response = msgbox.askokcancel("Quit Game?", "No games will be saved.\nTo view and export scores, please select the exit option.")
         if menu_response:
             root.destroy()
