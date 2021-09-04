@@ -28,7 +28,7 @@ class Quiz:
         global help_button, start_button, score_button, exit_button
         # Create frame
         self.menu_frame = Frame(root,
-                                background="Lemon Chiffon",
+                                background=background,
                                 width=300,
                                 height=400)
         self.menu_frame.grid()
@@ -36,8 +36,8 @@ class Quiz:
         # Title
         self.quiz_label = Label(self.menu_frame,
                                 text="Country Quiz",
-                                font=("Lucida Console", "18", "bold"),
-                                background="Lemon Chiffon",
+                                font=(font_default, "18", "bold"),
+                                background=background,
                                 width=20)
         self.quiz_label.grid(row=0, pady=20)
 
@@ -46,8 +46,8 @@ class Quiz:
                                       text="Test your knowledge\n"
                                            "of countries around\n"
                                            "the World!",
-                                      font=("Lucida Console", "14"),
-                                      background="Lemon Chiffon")
+                                      font=(font_default, "14"),
+                                      background=background)
         self.quiz_description.grid(row=1, pady=5, padx=10)
 
         # Start button
@@ -55,7 +55,7 @@ class Quiz:
                               text="Start!",
                               background="gold",
                               activebackground="Light goldenrod",
-                              font=("Lucida Console", "14", "bold"),
+                              font=(font_default, "14", "bold"),
                               command=self.open_start)
         start_button.grid(row=2, pady=10, padx=10)
 
@@ -64,7 +64,7 @@ class Quiz:
                               text="View Scores",
                               background="gold",
                               activebackground="Light goldenrod",
-                              font=("Lucida Console", "14", "bold"),
+                              font=(font_default, "14", "bold"),
                               command=self.open_score)
         score_button.grid(row=3, pady=10, padx=10)
 
@@ -73,7 +73,7 @@ class Quiz:
                              text="Help",
                              background="gold",
                              activebackground="Light goldenrod",
-                             font=("Lucida Console", "14", "bold"),
+                             font=(font_default, "14", "bold"),
                              command=self.open_help)
         help_button.grid(row=4, pady=10, padx=10)
 
@@ -82,12 +82,12 @@ class Quiz:
                              text="Quit",
                              background="gold",
                              activebackground="Light goldenrod",
-                             font=("Lucida Console", "14", "bold"),
+                             font=(font_default, "14", "bold"),
                              command=quit)
         exit_button.grid(row=5, pady=10, padx=10)
 
         # Position holder
-        self.space_label = Label(self.menu_frame, bg="Lemon Chiffon")
+        self.space_label = Label(self.menu_frame, bg=background)
         self.space_label.grid(row=6)
 
         # Open Help window
@@ -139,8 +139,8 @@ class Quiz:
         # Title
         start_label = Label(start_frame,
                             text="Select Mode",
-                            font=("Lucida Console", "18", "bold"),
-                            background="Lemon Chiffon",
+                            font=(font_default, "18", "bold"),
+                            background=background,
                             width=20)
         start_label.grid(row=0, pady=20)
 
@@ -149,8 +149,8 @@ class Quiz:
                                   text="Test your knowledge\n"
                                        "of countries around\n"
                                        "the World!",
-                                  font=("Lucida Console", "14"),
-                                  background="Lemon Chiffon")
+                                  font=(font_default, "14"),
+                                  background=background)
         start_description.grid(row=1, pady=5, padx=10)
 
         # Create combo box
@@ -163,11 +163,11 @@ class Quiz:
         mode_cb.current(0)
         # Format combo box
         mode_cb["state"] = "readonly"
-        mode_cb["font"] = "Lucida Console", 14
+        mode_cb["font"] = font_default, 14
         mode_cb["background"] = "Orange"
         mode_cb.grid(row=2, padx=10)
 
-        start_frame.option_add('*TCombobox*Listbox.font', ("Lucida Console", "14"))
+        start_frame.option_add('*TCombobox*Listbox.font', (font_default, "14"))
         start_frame.option_add('*TCombobox*Listbox.background', "Floral White")
         start_frame.option_add('*T.Combobox*TEntry.background', "Floral White")
         start_frame.option_add('*TCombobox*Listbox.selectBackground', "Gold")
@@ -191,7 +191,7 @@ class Quiz:
                              text="Play!",
                              background="gold",
                              activebackground="Light goldenrod",
-                             font=("Lucida Console", "14", "bold"),
+                             font=(font_default, "14", "bold"),
                              command=self.open_play)
         play_button.grid(row=3, pady=10, padx=10)
 
@@ -224,7 +224,7 @@ class Quiz:
         global country, keys, mode, others, answer, play_next_button, play_button_1, play_button_2, play_button_3, play_button_4, level, play_label, play_question, play_short_answer, question, play_short_answer_button, image_1, image_2, image_3, image_4
         play_heading = Label(self.play_frame,
                              text=country['name'],
-                             font=("Lucida Console", '18', 'bold'),
+                             font=(font_default, '18', 'bold'),
                              bg=background,
                              justify=CENTER,
                              width=20)
@@ -240,20 +240,20 @@ class Quiz:
             # Level heading
             play_label = Label(self.play_frame,
                                text="Level {}".format(level),
-                               font=("Lucida Console", '14', 'bold'),
+                               font=(font_default, '14', 'bold'),
                                bg=background)
             play_label.grid(row=2, columnspan=2)
 
             # Question
             play_question = Label(self.play_frame,
                                   text="What is the {} of {}?".format(question, mode),
-                                  font=('Lucida console', '14'),
+                                  font=(font_default, '14'),
                                   bg=background)
             play_question.grid(row=3, columnspan=2)
 
             # Entry field
             play_short_answer = Entry(self.play_frame,
-                                      font=('Lucida console', '14')
+                                      font=(font_default, '14')
                                       )
             play_short_answer.grid(row=4, columnspan=2)
             play_short_answer.bind('<Return>', self.check_answer_1)
@@ -261,7 +261,7 @@ class Quiz:
             # Check answer button
             play_short_answer_button = Button(self.play_frame,
                                               text="Enter",
-                                              font=('lucida console', '14'),
+                                              font=(font_default, '14'),
                                               bg='gold',
                                               activebackground='light goldenrod',
                                               command=self.check_answer_1)
@@ -308,7 +308,7 @@ class Quiz:
                                    compound='top',
                                    text=others[0][1],
                                    activebackground="light goldenrod",
-                                   font=("Lucida Console", "14"),
+                                   font=(font_default, "14"),
                                    command=self.check_answer_1,
                                    width=303,
                                    height=229
@@ -321,7 +321,7 @@ class Quiz:
                                    compound='top',
                                    text=others[1][1],
                                    activebackground="light goldenrod",
-                                   font=("Lucida Console", "14"),
+                                   font=(font_default, "14"),
                                    command=self.check_answer_2,
                                    width=303,
                                    height=229
@@ -335,7 +335,7 @@ class Quiz:
                                    compound='top',
                                    text=others[2][1],
                                    activebackground="light goldenrod",
-                                   font=("Lucida Console", "14"),
+                                   font=(font_default, "14"),
                                    command=self.check_answer_3,
                                    width=303,
                                    height=229
@@ -348,7 +348,7 @@ class Quiz:
                                    compound='top',
                                    text=others[3][1],
                                    activebackground="light goldenrod",
-                                   font=("Lucida Console", "14"),
+                                   font=(font_default, "14"),
                                    command=self.check_answer_4,
                                    width=303,
                                    height=229
@@ -360,7 +360,7 @@ class Quiz:
                                   text='Next',
                                   bg='gold',
                                   activebackground='light goldenrod',
-                                  font=('lucida console', '14'),
+                                  font=(font_default, '14'),
                                   command=self.next)
 
     # Commands for menu bar
@@ -483,7 +483,7 @@ class Quiz:
         play_feedback = Label(self.play_frame,
                               bg=background,
                               text="Correct!",
-                              font=('lucida console', '14'))
+                              font=(font_default, '14'))
         # Short answer questions check
         if level < 4:
             play_short_answer.unbind('<Return>')
@@ -525,7 +525,7 @@ class Quiz:
         play_feedback = Label(self.play_frame,
                               bg=background,
                               text="Correct!",
-                              font=('lucida console', '14'))
+                              font=(font_default, '14'))
         if answer != value:
             if type[question] == 'image multichoice':
                 answer = list(answer)
@@ -547,7 +547,7 @@ class Quiz:
         play_feedback = Label(self.play_frame,
                               bg=background,
                               text="Correct!",
-                              font=('lucida console', '14'))
+                              font=(font_default, '14'))
         if answer != value:
             if type[question] == 'image multichoice':
                 answer = list(answer)
@@ -569,7 +569,7 @@ class Quiz:
         play_feedback = Label(self.play_frame,
                               bg=background,
                               text="Correct!",
-                              font=('lucida console', '14'))
+                              font=(font_default, '14'))
         if answer != value:
             if type[question] == 'image multichoice':
                 answer = list(answer)
@@ -590,14 +590,14 @@ class Quiz:
         self.play_frame.grid_forget()
         root.configure(menu=empty_menu)
         self.id_frame = Frame(root,
-                              background="Lemon Chiffon")
+                              background=background)
         self.id_frame.grid()
 
         # Heading
         id_heading = Label(self.id_frame,
-                           bg='lemon chiffon',
+                           bg=background,
                            text='Enter a 3 Letter Username:',
-                           font=('lucida console', '18', 'bold'),
+                           font=(font_default, '18', 'bold'),
                            width=30)
         id_heading.grid(row=0, pady=20, padx=5, columnspan=3)
 
@@ -611,23 +611,24 @@ class Quiz:
 
         # Set up entry fields
         id_entry_a = Entry(self.id_frame,
-                           font=("Lucida console", "18"),
+                           font=(font_default, "18"),
                            width=3,
                            justify=CENTER,
                            textvariable=a)
         id_entry_a.grid(row=2, column=0, pady=10)
         id_entry_b = Entry(self.id_frame,
-                           font=("Lucida console", "18"),
+                           font=(font_default, "18"),
                            width=3,
                            justify=CENTER,
                            textvariable=b)
         id_entry_b.grid(row=2, column=1, pady=10)
         id_entry_c = Entry(self.id_frame,
-                           font=("Lucida console", "18"),
+                           font=(font_default, "18"),
                            width=3,
                            justify=CENTER,
                            textvariable=c)
         id_entry_c.grid(row=2, column=2, pady=10)
+        id_entry_a.focus()
 
         # Bind to validate input
         id_entry_a.bind('<KeyRelease>', self.key_entered)
@@ -643,7 +644,7 @@ class Quiz:
         id_enter = Button(self.id_frame,
                           bg='gold',
                           activebackground='light goldenrod',
-                          font=('lucida console', '14', 'bold'),
+                          font=(font_default, '14', 'bold'),
                           text='Enter',
                           command=self.save_username)
         id_enter.grid(row=3, column=1, pady=20)
@@ -668,15 +669,15 @@ class Quiz:
         if character == "\t" or not character:
             error_label = Label(self.id_frame,
                                 text=error,
-                                font=('lucida console', '14', 'bold'),
-                                bg='lemon chiffon',
+                                font=(font_default, '14', 'bold'),
+                                bg=background,
                                 fg='red')  # Hold var for .grid_forget()
             return ("break")
         if character:
             error_label = Label(self.id_frame,
                                 text=error,
-                                font=('lucida console', '14', 'bold'),
-                                bg='lemon chiffon',
+                                font=(font_default, '14', 'bold'),
+                                bg=background,
                                 fg='red')
 
         check = "[A-Za-z]"
@@ -735,7 +736,7 @@ class Quiz:
         # Heading
         score_label = Label(score_frame,
                             text="High Scores",
-                            font=("Lucida Console", "18", "bold"),
+                            font=(font_default, "18", "bold"),
                             bg=background,
                             width=20)
         score_label.grid(row=0, pady=20, padx=10, columnspan=2)
@@ -748,7 +749,7 @@ class Quiz:
         # Button to change mode
         score_random_button = Button(score_chart_frame,
                                      text="Random",
-                                     font=("Lucida Console", "14", "bold"),
+                                     font=(font_default, "14", "bold"),
                                      bg='gold',
                                      activebackground='light goldenrod',
                                      command=self.show_random_scores,
@@ -757,7 +758,7 @@ class Quiz:
 
         score_country_button = Button(score_chart_frame,
                                       text="Country",
-                                      font=("Lucida Console", "14", "bold"),
+                                      font=(font_default, "14", "bold"),
                                       bg='light goldenrod',
                                       activebackground='gold',
                                       command=self.show_country_scores,
@@ -771,13 +772,13 @@ class Quiz:
         # Scoreboard Headings
         score_heading_1 = Label(frame_random_score,
                                 text="Player",
-                                font=("Lucida console", "14", "bold"),
+                                font=(font_default, "14", "bold"),
                                 background='gold',
                                 width=20)
         score_heading_1.grid(row=0, column=0)
         score_heading_2 = Label(frame_random_score,
                                 text="Score",
-                                font=("Lucida console", "14", "bold"),
+                                font=(font_default, "14", "bold"),
                                 background='gold',
                                 width=20)
         score_heading_2.grid(row=0, column=1)
@@ -801,20 +802,20 @@ class Quiz:
                     break
                 name_temp = Label(frame_random_score,
                                   bg='gold',
-                                  font=('lucida console', '14'),
+                                  font=(font_default, '14'),
                                   text=random_scores[i][1])
                 name_temp.grid(row=i + 1, column=0)
 
                 score_temp = Label(frame_random_score,
                                    bg='gold',
-                                   font=('lucida console', '14'),
+                                   font=(font_default, '14'),
                                    text=f"{random_scores[i][0]}/10")
                 score_temp.grid(row=i + 1, column=1)
         else:
             random_score_text = Label(frame_random_score,
                                       bg='gold',
                                       text='No records',
-                                      font=('lucida console', '14'))
+                                      font=(font_default, '14'))
             random_score_text.grid(row=1, columnspan=2)
 
         # Frame for country mode
@@ -824,19 +825,19 @@ class Quiz:
         # Scoreboard headings
         score_heading_1 = Label(frame_country_score,
                                 text="Player",
-                                font=("Lucida console", "14", "bold"),
+                                font=(font_default, "14", "bold"),
                                 background='light goldenrod',
                                 width=13)
         score_heading_1.grid(row=0, column=0)
         score_heading_2 = Label(frame_country_score,
                                 text="Country",
-                                font=("Lucida console", "14", "bold"),
+                                font=(font_default, "14", "bold"),
                                 background='light goldenrod',
                                 width=13)
         score_heading_2.grid(row=0, column=1)
         score_heading_3 = Label(frame_country_score,
                                 text="Score",
-                                font=("Lucida console", "14", "bold"),
+                                font=(font_default, "14", "bold"),
                                 background='light goldenrod',
                                 width=13)
         score_heading_3.grid(row=0, column=2)
@@ -849,26 +850,26 @@ class Quiz:
                     break
                 name_temp = Label(frame_country_score,
                                   bg='light goldenrod',
-                                  font=('lucida console', '14'),
+                                  font=(font_default, '14'),
                                   text=scores[i][1])
                 name_temp.grid(row=i + 1, column=0)
 
                 country_temp = Label(frame_country_score,
                                      bg='light goldenrod',
-                                     font=('lucida console', '14'),
+                                     font=(font_default, '14'),
                                      text=scores[i][2])
                 country_temp.grid(row=i + 1, column=1)
 
                 score_temp = Label(frame_country_score,
                                    bg='light goldenrod',
-                                   font=('lucida console', '14'),
+                                   font=(font_default, '14'),
                                    text=f"{scores[i][0]}/10")
                 score_temp.grid(row=i + 1, column=2)
         else:
             country_score_text = Label(frame_country_score,
                                        bg='light goldenrod',
                                        text='No records',
-                                       font=('lucida console', '14'))
+                                       font=(font_default, '14'))
             country_score_text.grid(row=1, columnspan=3)
 
         try:
@@ -879,7 +880,7 @@ class Quiz:
                 frame_country_score.grid(row=2, columnspan=2)
                 score_chart_frame.configure(bg='light goldenrod')
             last_played_label = Label(score_frame,
-                                      bg='lemon chiffon',
+                                      bg=background,
                                       font=(font_default, 14),
                                       text=last_played_txt)
             last_played_label.grid(columnspan=2, sticky=W + E, row=2, pady=5)
@@ -889,7 +890,7 @@ class Quiz:
         # Return to menu button
         menu_button = Button(score_frame,
                              text="Menu",
-                             font=('lucida console', '14'),
+                             font=(font_default, '14'),
                              bg="gold",
                              activebackground="light goldenrod",
                              command=self.open_menu,
@@ -899,7 +900,7 @@ class Quiz:
         export_button = Button(score_frame,
                                bg='gold',
                                activebackground='light goldenrod',
-                               font=('lucida console', '14'),
+                               font=(font_default, '14'),
                                text='Export...',
                                command=self.open_export)
         export_button.grid(row=3, column=0, pady=25)
@@ -941,6 +942,8 @@ class Help:
         # Create frame
         global help_box
         help_box = Toplevel()
+        help_box.title("Countries Quiz > Help")
+        help_box.focus()
 
         self.help_frame = Frame(help_box,
                                 bg=background)
@@ -981,11 +984,9 @@ class Help:
 # Export window
 class Export:
     def __init__(self):
-        # Format BG color
-        background = "lemon chiffon"
-
         # Sets up child window (IE, Export box)
         self.export_box = Toplevel()
+        self.export_box.title("Countries Quiz > Export")
         self.export_box.protocol("WM_DELETE_WINDOW", self.close_export)
 
         # Set up GUI frame
@@ -995,7 +996,7 @@ class Export:
         # Set up Export Heading (row 0)
         export_heading = Label(self.export_frame,
                                text="Export",
-                               font=("lucida console", "18", "bold"),
+                               font=(font_default, "18", "bold"),
                                bg=background,
                                padx=10,
                                pady=10)
@@ -1008,15 +1009,16 @@ class Export:
                                        "\nIf both checkmarks are left unchecked, both country mode scores"
                                        "\nand random mode scores will be exported."
                                        "\n\nEnter file name without the suffix (.txt):",
-                                  font=("lucida console", "12"),
+                                  font=(font_default, "12"),
                                   bg=background)
         instruction_label.grid(row=1, padx=5, pady=5)
 
         # Set up entry field
         self.file_name_entry = Entry(self.export_frame,
-                                     font=('lucida console', '14'),
+                                     font=(font_default, '14'),
                                      width=40)
         self.file_name_entry.grid(row=3, padx=10, pady=5)
+        self.file_name_entry.focus()
 
         # Set up export option
         self.var_country = IntVar()
@@ -1024,7 +1026,7 @@ class Export:
         self.export_country_check = Checkbutton(self.export_frame,
                                                 text="Country scores only",
                                                 bg=background,
-                                                font=("lucida console", "8"),
+                                                font=(font_default, "8"),
                                                 variable=self.var_country,
                                                 command=lambda: self.check_mode(self.export_country_check),
                                                 activebackground=background)
@@ -1032,7 +1034,7 @@ class Export:
         self.export_random_check = Checkbutton(self.export_frame,
                                                text="Random scores only",
                                                bg=background,
-                                               font=("lucida console", "8"),
+                                               font=(font_default, "8"),
                                                variable=self.var_random,
                                                command=lambda: self.check_mode(self.export_random_check),
                                                activebackground=background)
@@ -1041,7 +1043,7 @@ class Export:
         # Set up Dismiss and export button (button, row 4)
         final_export_button = Button(self.export_frame,
                                      text="Export",
-                                     font=("lucida console", "14"),
+                                     font=(font_default, "14"),
                                      bg="gold",
                                      padx=10,
                                      width=9,
@@ -1052,7 +1054,7 @@ class Export:
 
         export_dismiss_button = Button(self.export_frame,
                                        text="Dismiss",
-                                       font=("lucida console", "14"),
+                                       font=(font_default, "14"),
                                        bg="gold",
                                        padx=10,
                                        width=9,
@@ -1190,7 +1192,7 @@ class Export:
 
 error_label = ''
 background = "Lemon Chiffon"
-font_default = "Lucida console"
+font_default = "lucida console"
 scores = []
 random_scores = []
 if __name__ == "__main__":
