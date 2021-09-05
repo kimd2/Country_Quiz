@@ -6,6 +6,7 @@ Version 6
 - Combine 4 check answer functions into 1
 - Bind enter to next button after checking
 - Bind enter key to save username command on username
+- add sticky property to frames
 """
 import tkinter.messagebox as msgbox
 from tkinter import *
@@ -29,7 +30,7 @@ class Quiz:
                                 background=background,
                                 width=300,
                                 height=400)
-        self.menu_frame.grid()
+        self.menu_frame.grid(sticky=NSEW)
 
         # Title
         self.quiz_label = Label(self.menu_frame,
@@ -130,7 +131,7 @@ class Quiz:
         # Create select mode frame
         self.start_frame = Frame(root,
                             bg=background)
-        self.start_frame.grid()
+        self.start_frame.grid(sticky=NSEW)
 
         # Title
         start_label = Label(self.start_frame,
@@ -198,7 +199,7 @@ class Quiz:
 
         self.play_frame = Frame(root,
                                 bg=background)
-        self.play_frame.grid()
+        self.play_frame.grid(sticky=NSEW)
 
         # Get data
         valid = False
@@ -555,7 +556,7 @@ class Quiz:
         root.configure(menu=empty_menu)
         self.id_frame = Frame(root,
                               background=background)
-        self.id_frame.grid()
+        self.id_frame.grid(sticky=NSEW)
 
         # Heading
         id_heading = Label(self.id_frame,
@@ -695,7 +696,7 @@ class Quiz:
         # Format GUI
         self.score_frame = Frame(root,
                             bg=background)
-        self.score_frame.grid()
+        self.score_frame.grid(sticky=NSEW)
 
         # Heading
         score_label = Label(self.score_frame,
@@ -708,7 +709,7 @@ class Quiz:
         # Frame for buttons
         self.score_chart_frame = Frame(self.score_frame,
                                   bg='gold')
-        self.score_chart_frame.grid(row=1, padx=5, columnspan=2)
+        self.score_chart_frame.grid(row=1, padx=5, columnspan=2, sticky=NSEW)
 
         # Button to change mode
         score_random_button = Button(self.score_chart_frame,
@@ -881,7 +882,7 @@ class Quiz:
     # Change mode to country scores
     def show_country_scores(self):
         self.frame_random_score.grid_forget()
-        self.frame_country_score.grid(row=2, columnspan=2)
+        self.frame_country_score.grid(row=2, columnspan=2, sticky=NSEW)
         self.score_chart_frame.configure(bg='light goldenrod')
 
     # Open Menu
@@ -891,7 +892,7 @@ class Quiz:
             self.play_frame.grid_forget()
         else:
             self.score_frame.grid_forget()
-        self.menu_frame.grid()
+        self.menu_frame.grid(sticky=NSEW)
 
     # Open export window and disable button
     def open_export(self):
@@ -905,6 +906,8 @@ class Help:
     def __init__(self, start_button, help_button, score_button, exit_button):
         # Create frame
         self.help_box = Toplevel()
+        self.help_box.columnconfigure(0, weight=1)
+        self.help_box.rowconfigure(0, weight=1)
         self.help_box.title("Countries Quiz > Help")
         self.help_box.focus()
 
@@ -916,7 +919,7 @@ class Help:
 
         self.help_frame = Frame(self.help_box,
                                 bg=background)
-        self.help_frame.grid()
+        self.help_frame.grid(sticky=NSEW)
 
         # Help Title
         help_label = Label(self.help_frame, text="Help",
@@ -955,6 +958,8 @@ class Export:
     def __init__(self, export_btn, menu_btn):
         # Sets up child window (IE, Export box)
         self.export_box = Toplevel()
+        self.export_box.columnconfigure(0, weight=1)
+        self.export_box.rowconfigure(0, weight=1)
         self.export_box.title("Countries Quiz > Export")
         self.export_box.protocol("WM_DELETE_WINDOW", self.close_export)
 
@@ -964,7 +969,7 @@ class Export:
 
         # Set up GUI frame
         self.export_frame = Frame(self.export_box, width=300, height=200, bg=background, pady=10)
-        self.export_frame.grid()
+        self.export_frame.grid(sticky=NSEW)
 
         # Set up Export Heading (row 0)
         export_heading = Label(self.export_frame,
@@ -1213,6 +1218,7 @@ class Export:
             self.export.write("No records\n\n")
 
 
+# Main Routine
 error_label = ''
 background = "Lemon Chiffon"
 font_default = "lucida console"
@@ -1221,6 +1227,8 @@ random_scores = []
 if __name__ == "__main__":
     root = Tk()
     root.title("Countries Quiz")
+    root.columnconfigure(0, weight=1)   # Allow window fill
+    root.rowconfigure(0, weight=1)
     root.unbind_class("Button", "<Key-space>")  # Unbind existing binding
     empty_menu = Menu(root)  # To remove existing menu
     game = Quiz()
